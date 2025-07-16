@@ -34,9 +34,9 @@ const telegraf = new Telegraf(env.BOT_TOKEN);
 
 await client
   .start({
-    phoneNumber: async () => input.text("Номер телефона:"),
+    phoneNumber: async () => input.text("Phone number:"),
     password: async () => input.text("TFA Password:"),
-    phoneCode: async () => input.text("Код телеграмм:"),
+    phoneCode: async () => input.text("Telegram code:"),
     onError: (err) => {
       console.error("Telegram error:", err);
       process.exit(0);
@@ -59,22 +59,22 @@ let isBotStopped = false;
 await telegraf.telegram.setMyCommands([
   {
     command: "stopbuys",
-    description: "Остановить бота",
+    description: "Stop the bot",
   },
   {
     command: "startbuys",
-    description: "Запустить бота",
+    description: "Start the bot",
   },
 ]);
 telegraf.command("stopbuys", (ctx) => {
   isBotStopped = true;
   lastMessageId = null;
-  ctx.reply("бот остановлен");
+  ctx.reply("bot stopped");
 });
 
 telegraf.command("startbuys", (ctx) => {
   isBotStopped = false;
-  ctx.reply("бот запущен");
+  ctx.reply("bot started");
 });
 
 telegraf.launch();
@@ -89,14 +89,13 @@ while (true) {
       if (json.status !== "ok") {
         await telegraf.telegram.sendMessage(
           myId,
-          `!Ошибка в рут-боте!
-${json.error}`,
+          `!Error in the root bot!\n${json.error}`,
         );
       } else {
         if (!lastMessageId) {
           const message = await telegraf.telegram.sendMessage(
             me.id.toString(),
-            `Бот исправен, последнее обновление: ${new Date().toLocaleString()}(UTC+0)`,
+            `Bot is working, last update: ${new Date().toLocaleString()}(UTC+0)`,
           );
           lastMessageId = message.message_id;
         } else if (k % 100 === 0) {
@@ -104,7 +103,7 @@ ${json.error}`,
             me.id.toString(),
             lastMessageId,
             undefined,
-            `Бот исправен, последнее обновление: ${new Date().toLocaleString()}(UTC+0)`,
+            `Bot is working, last update: ${new Date().toLocaleString()}(UTC+0)`,
           );
         }
         k++;
@@ -113,8 +112,7 @@ ${json.error}`,
       if (json.new_gifts.length) {
         await telegraf.telegram.sendMessage(
           myId,
-          `Появились новые подарки:
-${json.new_gifts.map((x) => `Id: ${x.id}, Supply: ${x.supply}, Price: ${x.price}\n`)}
+          `New gifts have appeared:\n${json.new_gifts.map((x) => `Id: ${x.id}, Supply: ${x.supply}, Price: ${x.price}\n`)}
 `,
         );
 
@@ -146,13 +144,13 @@ ${json.new_gifts.map((x) => `Id: ${x.id}, Supply: ${x.supply}, Price: ${x.price}
         );
 
         if (!giftToBuy) {
-          await telegraf.telegram.sendMessage(myId, `Ни один подарок не подошел под фильтр`);
+          await telegraf.telegram.sendMessage(myId, `No gift matched the filter`);
           continue;
         }
         if (balance.amount.toJSNumber() < giftToBuy.price) {
           await telegraf.telegram.sendMessage(
             myId,
-            `Нет баланса для покупки. Баланс: ${balance.amount.toJSNumber()}`,
+            `Not enough balance for purchase. Balance: ${balance.amount.toJSNumber()}`,
           );
         }
 
@@ -168,7 +166,7 @@ ${json.new_gifts.map((x) => `Id: ${x.id}, Supply: ${x.supply}, Price: ${x.price}
         const channel = updates.chats[0] as Channel;
         await telegraf.telegram.sendMessage(
           myId,
-          `Создан канал Gifts ${i}, отгружаем на него ${giftsToSend} подарков с id ${giftToBuy.id}.`,
+          `Channel Gifts ${i} created, sending ${giftsToSend} gifts with id ${giftToBuy.id} to it.`,
         );
 
         let isError = false;
@@ -201,7 +199,7 @@ ${json.new_gifts.map((x) => `Id: ${x.id}, Supply: ${x.supply}, Price: ${x.price}
     } catch (error) {
       console.error(error);
       console.log("Some unhandled error, restarting in 3 secs");
-      await telegraf.telegram.sendMessage(myId, `Ошибка в slave-боте!`);
+      await telegraf.telegram.sendMessage(myId, `Error in the slave bot!`);
       await delay(3000);
     }
   }
