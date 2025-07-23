@@ -35,7 +35,8 @@ export async function startCore(client: TelegramClient) {
         const user = db.users[userId];
 
         const subIsActive = user.subscription_active && new Date(user.subscription_expires_at!) > new Date();
-        if (!subIsActive || !user.channel_id) {
+        // Skip user if they are not subscribed, don't have a channel, or don't have an access hash
+        if (!subIsActive || !user.channel_id || !user.channel_access_hash) {
           continue;
         }
 
@@ -44,7 +45,6 @@ export async function startCore(client: TelegramClient) {
             continue;
           }
 
-          // Find a matching filter from the user's list of filters.
           const matchingFilter = user.filters.find(f => 
             gift.price >= f.min_price && 
             gift.price <= f.max_price && 
@@ -53,7 +53,9 @@ export async function startCore(client: TelegramClient) {
 
           if (matchingFilter) {
             console.log(`Found matching gift ${gift.id} for user ${userId}. Attempting to buy...`);
-            const wasPurchased = await purchaseAndSendGift(client, user.channel_id, gift);
+            
+            // FIX: Pass the channel_access_hash to the purchase function
+            const wasPurchased = await purchaseAndSendGift(client, user.channel_id, user.channel_access_hash, gift);
             
             if (wasPurchased) {
               user.balance -= gift.price;
@@ -81,15 +83,20 @@ export async function startCore(client: TelegramClient) {
   }
 }
 
-async function purchaseAndSendGift(client: TelegramClient, channelId: string, gift: NewGift): Promise<boolean> {
+// FIX: The function now accepts and uses the real access hash
+async function purchaseAndSendGift(client: TelegramClient, channelIdStr: string, accessHashStr: string, gift: NewGift): Promise<boolean> {
   try {
-    const peerChannelId = BigInteger(channelId.substring(1));
+    const peerChannelId = BigInteger(channelIdStr.substring(1));
+    const accessHash = BigInteger(accessHashStr); // Use the provided access hash
+
     const invoice = new Api.InputInvoiceStarGift({
-        peer: new Api.InputPeerChannel({ channelId: peerChannelId, accessHash: BigInteger(0) }),
+        peer: new Api.InputPeerChannel({ channelId: peerChannelId, accessHash: accessHash }), // Use the real access hash
         giftId: BigInteger(gift.id),
         hideName: true,
     });
+    
     const paymentForm = await client.invoke(new Api.payments.GetPaymentForm({ invoice }));
+    
     if (
         paymentForm.invoice instanceof Api.Invoice &&
         paymentForm.invoice.prices.length === 1 &&
@@ -103,7 +110,7 @@ async function purchaseAndSendGift(client: TelegramClient, channelId: string, gi
     }
     return false;
   } catch (error) {
-    console.error(`Failed to purchase gift ${gift.id} for channel ${channelId}:`, error);
+    console.error(`Failed to purchase gift ${gift.id} for channel ${channelIdStr}:`, error);
     return false;
   }
 }

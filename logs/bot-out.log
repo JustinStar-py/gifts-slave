@@ -1,0 +1,128 @@
+2025-07-20 18:21:14 +01:00: 
+2025-07-20 18:21:14 +01:00: > tg-gifts-autobuy@1.0.0 start
+2025-07-20 18:21:14 +01:00: > tsx src/index.ts
+2025-07-20 18:21:14 +01:00: 
+2025-07-20 18:21:15 +01:00: [dotenv@17.0.1] injecting env (5) from .env – [tip] encrypt with dotenvx: https://dotenvx.com
+2025-07-20 18:21:15 +01:00: Initializing client...
+2025-07-20 18:21:15 +01:00: [33m[2025-07-20T18:21:15.463] [INFO] - [Running gramJS version 2.26.29][0m
+2025-07-20 18:21:15 +01:00: [33m[2025-07-20T18:21:15.470] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-20 18:21:15 +01:00: [33m[2025-07-20T18:21:15.576] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-20 18:21:15 +01:00: [33m[2025-07-20T18:21:15.577] [INFO] - [Using LAYER 204 for initial connect][0m
+2025-07-20 18:21:15 +01:00: Client connected successfully.
+2025-07-20 18:21:15 +01:00: Bot (final version) with 15s timed-check promotion has been launched.
+2025-07-20 18:21:15 +01:00: Core logic started, monitoring for gifts...
+2025-07-20 18:21:15 +01:00: Application is now fully running.
+2025-07-20 18:56:13 +01:00: 
+2025-07-20 18:56:13 +01:00: > tg-gifts-autobuy@1.0.0 start
+2025-07-20 18:56:13 +01:00: > tsx src/index.ts
+2025-07-20 18:56:13 +01:00: 
+2025-07-20 18:56:14 +01:00: [dotenv@17.0.1] injecting env (5) from .env – [tip] encrypt with dotenvx: https://dotenvx.com
+2025-07-20 18:56:14 +01:00: Initializing client...
+2025-07-20 18:56:14 +01:00: [33m[2025-07-20T18:56:14.548] [INFO] - [Running gramJS version 2.26.29][0m
+2025-07-20 18:56:14 +01:00: [33m[2025-07-20T18:56:14.552] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-20 18:56:14 +01:00: [33m[2025-07-20T18:56:14.657] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-20 18:56:14 +01:00: [33m[2025-07-20T18:56:14.658] [INFO] - [Using LAYER 204 for initial connect][0m
+2025-07-20 18:56:15 +01:00: Client connected successfully.
+2025-07-20 18:56:15 +01:00: Bot (final version) with 15s timed-check promotion has been launched.
+2025-07-20 18:56:15 +01:00: Core logic started, monitoring for gifts...
+2025-07-20 18:56:15 +01:00: Application is now fully running.
+2025-07-20 18:58:15 +01:00: 
+2025-07-20 18:58:15 +01:00: > tg-gifts-autobuy@1.0.0 start
+2025-07-20 18:58:15 +01:00: > tsx src/index.ts
+2025-07-20 18:58:15 +01:00: 
+2025-07-20 18:58:15 +01:00: [dotenv@17.0.1] injecting env (5) from .env – [tip] encrypt with dotenvx: https://dotenvx.com
+2025-07-20 18:58:16 +01:00: Initializing client...
+2025-07-20 18:58:16 +01:00: [33m[2025-07-20T18:58:16.018] [INFO] - [Running gramJS version 2.26.29][0m
+2025-07-20 18:58:16 +01:00: [33m[2025-07-20T18:58:16.024] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-20 18:58:16 +01:00: [33m[2025-07-20T18:58:16.130] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-20 18:58:16 +01:00: [33m[2025-07-20T18:58:16.131] [INFO] - [Using LAYER 204 for initial connect][0m
+2025-07-20 18:58:16 +01:00: Client connected successfully.
+2025-07-20 18:58:16 +01:00: Bot (final version) with 15s timed-check promotion has been launched.
+2025-07-20 18:58:16 +01:00: Core logic started, monitoring for gifts...
+2025-07-20 18:58:16 +01:00: Application is now fully running.
+2025-07-20 19:00:59 +01:00: Waiting 10 seconds to check for user 1887509957 join...
+2025-07-20 19:01:14 +01:00: User 1887509957 found in channel. Promoting...
+2025-07-20 19:01:14 +01:00: User 1887509957 successfully promoted.
+2025-07-20 19:07:03 +01:00: 
+2025-07-20 19:07:03 +01:00: > tg-gifts-autobuy@1.0.0 start
+2025-07-20 19:07:03 +01:00: > tsx src/index.ts
+2025-07-20 19:07:03 +01:00: 
+2025-07-20 19:07:04 +01:00: [dotenv@17.0.1] injecting env (5) from .env – [tip] encrypt with dotenvx: https://dotenvx.com
+2025-07-20 19:07:04 +01:00: Initializing client...
+2025-07-20 19:07:04 +01:00: [33m[2025-07-20T19:07:04.682] [INFO] - [Running gramJS version 2.26.29][0m
+2025-07-20 19:07:04 +01:00: [33m[2025-07-20T19:07:04.686] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-20 19:07:04 +01:00: [33m[2025-07-20T19:07:04.794] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-20 19:07:04 +01:00: [33m[2025-07-20T19:07:04.796] [INFO] - [Using LAYER 204 for initial connect][0m
+2025-07-20 19:07:05 +01:00: Client connected successfully.
+2025-07-20 19:07:05 +01:00: Bot (final version) with crash fix has been launched.
+2025-07-20 19:07:05 +01:00: Core logic started, monitoring for gifts...
+2025-07-20 19:07:05 +01:00: Application is now fully running.
+2025-07-20 19:07:13 +01:00: Waiting 15 seconds to check for user 380470543 join...
+2025-07-20 19:07:28 +01:00: Warning sent to user 380470543. Waiting another 15 seconds...
+2025-07-20 19:07:43 +01:00: User 380470543 failed to join the channel in time.
+2025-07-20 20:30:20 +01:00: Waiting 15 seconds to check for user 8163588511 join...
+2025-07-20 20:30:35 +01:00: Warning sent to user 8163588511. Waiting another 15 seconds...
+2025-07-20 20:30:50 +01:00: User 8163588511 found in channel. Promoting...
+2025-07-20 20:30:50 +01:00: User 8163588511 failed to join the channel in time.
+2025-07-20 21:06:36 +01:00: 
+2025-07-20 21:06:36 +01:00: > tg-gifts-autobuy@1.0.0 start
+2025-07-20 21:06:36 +01:00: > tsx src/index.ts
+2025-07-20 21:06:36 +01:00: 
+2025-07-20 21:06:37 +01:00: [dotenv@17.0.1] injecting env (5) from .env – [tip] encrypt with dotenvx: https://dotenvx.com
+2025-07-20 21:06:37 +01:00: Initializing client...
+2025-07-20 21:06:37 +01:00: [33m[2025-07-20T21:06:37.262] [INFO] - [Running gramJS version 2.26.29][0m
+2025-07-20 21:06:37 +01:00: [33m[2025-07-20T21:06:37.266] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-20 21:06:37 +01:00: [33m[2025-07-20T21:06:37.376] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-20 21:06:37 +01:00: [33m[2025-07-20T21:06:37.378] [INFO] - [Using LAYER 204 for initial connect][0m
+2025-07-20 21:06:37 +01:00: Client connected successfully.
+2025-07-20 21:06:37 +01:00: Bot (final version) with crash fix has been launched.
+2025-07-20 21:06:37 +01:00: Core logic started, monitoring for gifts...
+2025-07-20 21:06:37 +01:00: Application is now fully running.
+2025-07-21 01:11:18 +01:00: [33m[2025-07-21T01:11:18.003] [INFO] - [connection closed][0m
+2025-07-21 01:11:18 +01:00: [35m[2025-07-21T01:11:18.003] [WARN] - [Connection closed while receiving data][0m
+2025-07-21 01:11:19 +01:00: [33m[2025-07-21T01:11:19.005] [INFO] - [Started reconnecting][0m
+2025-07-21 01:11:19 +01:00: [35m[2025-07-21T01:11:19.006] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-21 01:11:19 +01:00: [33m[2025-07-21T01:11:19.006] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-21 01:11:19 +01:00: [33m[2025-07-21T01:11:19.007] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-21 01:11:19 +01:00: [33m[2025-07-21T01:11:19.119] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-21 01:11:19 +01:00: [33m[2025-07-21T01:11:19.120] [INFO] - [Handling reconnect!][0m
+2025-07-21 04:38:29 +01:00: [33m[2025-07-21T04:38:29.705] [INFO] - [Started reconnecting][0m
+2025-07-21 04:38:29 +01:00: [35m[2025-07-21T04:38:29.705] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-21 04:38:29 +01:00: [33m[2025-07-21T04:38:29.706] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-21 04:38:29 +01:00: [35m[2025-07-21T04:38:29.706] [WARN] - [Connection closed while receiving data][0m
+2025-07-21 04:38:29 +01:00: [33m[2025-07-21T04:38:29.706] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-21 04:38:29 +01:00: [33m[2025-07-21T04:38:29.707] [INFO] - [connection closed][0m
+2025-07-21 04:38:41 +01:00: [33m[2025-07-21T04:38:41.081] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-21 04:38:41 +01:00: [33m[2025-07-21T04:38:41.081] [INFO] - [Handling reconnect!][0m
+2025-07-21 04:39:17 +01:00: [33m[2025-07-21T04:39:17.908] [INFO] - [Started reconnecting][0m
+2025-07-21 04:39:17 +01:00: [35m[2025-07-21T04:39:17.908] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-21 04:39:17 +01:00: [33m[2025-07-21T04:39:17.908] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-21 04:39:17 +01:00: [35m[2025-07-21T04:39:17.908] [WARN] - [Connection closed while receiving data][0m
+2025-07-21 04:39:17 +01:00: [33m[2025-07-21T04:39:17.909] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-21 04:39:17 +01:00: [33m[2025-07-21T04:39:17.909] [INFO] - [connection closed][0m
+2025-07-21 04:39:18 +01:00: [33m[2025-07-21T04:39:18.021] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-21 04:39:18 +01:00: [33m[2025-07-21T04:39:18.021] [INFO] - [Handling reconnect!][0m
+2025-07-21 07:32:38 +01:00: [33m[2025-07-21T07:32:38.561] [INFO] - [connection closed][0m
+2025-07-21 07:32:38 +01:00: [35m[2025-07-21T07:32:38.561] [WARN] - [Connection closed while receiving data][0m
+2025-07-21 07:32:39 +01:00: [33m[2025-07-21T07:32:39.562] [INFO] - [Started reconnecting][0m
+2025-07-21 07:32:39 +01:00: [35m[2025-07-21T07:32:39.563] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-21 07:32:39 +01:00: [33m[2025-07-21T07:32:39.563] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-21 07:32:39 +01:00: [33m[2025-07-21T07:32:39.563] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-21 07:32:39 +01:00: [33m[2025-07-21T07:32:39.668] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-21 07:32:39 +01:00: [33m[2025-07-21T07:32:39.668] [INFO] - [Handling reconnect!][0m
+2025-07-22 19:52:29 +01:00: [33m[2025-07-22T19:52:29.278] [INFO] - [connection closed][0m
+2025-07-22 19:52:29 +01:00: [35m[2025-07-22T19:52:29.278] [WARN] - [Connection closed while receiving data][0m
+2025-07-22 19:52:30 +01:00: [33m[2025-07-22T19:52:30.280] [INFO] - [Started reconnecting][0m
+2025-07-22 19:52:30 +01:00: [35m[2025-07-22T19:52:30.280] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-22 19:52:30 +01:00: [33m[2025-07-22T19:52:30.281] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-22 19:52:30 +01:00: [33m[2025-07-22T19:52:30.281] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-22 19:52:30 +01:00: [33m[2025-07-22T19:52:30.388] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-22 19:52:30 +01:00: [33m[2025-07-22T19:52:30.388] [INFO] - [Handling reconnect!][0m
+2025-07-22 19:54:01 +01:00: [33m[2025-07-22T19:54:01.593] [INFO] - [connection closed][0m
+2025-07-22 19:54:01 +01:00: [35m[2025-07-22T19:54:01.594] [WARN] - [Connection closed while receiving data][0m
+2025-07-22 19:54:02 +01:00: [33m[2025-07-22T19:54:02.593] [INFO] - [Started reconnecting][0m
+2025-07-22 19:54:02 +01:00: [35m[2025-07-22T19:54:02.593] [WARN] - [[Reconnect] Closing current connection...][0m
+2025-07-22 19:54:02 +01:00: [33m[2025-07-22T19:54:02.593] [INFO] - [Disconnecting from 149.154.175.56:80/TCPFull...][0m
+2025-07-22 19:54:02 +01:00: [33m[2025-07-22T19:54:02.594] [INFO] - [Connecting to 149.154.175.56:80/TCPFull...][0m
+2025-07-22 19:54:02 +01:00: [33m[2025-07-22T19:54:02.699] [INFO] - [Connection to 149.154.175.56:80/TCPFull complete!][0m
+2025-07-22 19:54:02 +01:00: [33m[2025-07-22T19:54:02.699] [INFO] - [Handling reconnect!][0m

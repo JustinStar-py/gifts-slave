@@ -34,7 +34,7 @@ export const languages = {
         // Settings Menu
         settings_menu_title: (filters: string) => `Your current filters:\n\n${filters}`,
         no_filters_set: "You have no filters set.",
-        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `Filter #${i + 1}: Price ${min}-${max}, Repeats: ${p_count}/${m_repeats}`,
+        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `Filter #${i}: Price ${min}-${max}, Repeats: ${p_count}/${m_repeats}`,
         add_filter_button: "➕ Add New Filter",
         clear_filters_button: "🗑️ Clear All Filters",
         filters_cleared_success: "All your filters have been cleared!",
@@ -77,7 +77,7 @@ export const languages = {
 
         settings_menu_title: (filters: string) => `فیلترهای فعلی شما:\n\n${filters}`,
         no_filters_set: "شما هیچ فیلتری تنظیم نکرده‌اید.",
-        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `فیلتر #${i + 1}: قیمت ${min}-${max}، تکرار: ${p_count} از ${m_repeats}`,
+        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `فیلتر #${i}: قیمت ${min}-${max}، تکرار: ${p_count} از ${m_repeats}`,
         add_filter_button: "➕ افزودن فیلتر جدید",
         clear_filters_button: "🗑️ پاک کردن همه فیلترها",
         filters_cleared_success: "تمام فیلترهای شما پاک شدند!",
@@ -118,7 +118,7 @@ export const languages = {
 
         settings_menu_title: (filters: string) => `Ваши текущие фильтры:\n\n${filters}`,
         no_filters_set: "У вас нет настроенных фильтров.",
-        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `Фильтр #${i + 1}: Цена ${min}-${max}, Повторы: ${p_count}/${m_repeats}`,
+        filter_line: (i: number, min: number, max: number, p_count: number, m_repeats: number) => `Фильтр #${i}: Цена ${min}-${max}, Повторы: ${p_count}/${m_repeats}`,
         add_filter_button: "➕ Добавить новый фильтр",
         clear_filters_button: "🗑️ Очистить все фильтры",
         filters_cleared_success: "Все ваши фильтры были очищены!",

@@ -7,15 +7,10 @@ import { env } from "./env.js";
 import { Language, t } from "./i18n.js";
 
 // A simple in-memory state for multi-step operations (like adding a filter).
-// This is cleared when the user navigates to a new menu to avoid getting stuck.
 const userSteps: Record<string, { step: string, data: any }> = {};
 
 /**
  * Creates a unique payload for Telegram invoices to track payments.
- * @param userId The user's Telegram ID.
- * @param type The type of payment ('subscription' or 'deposit').
- * @param amount Optional amount for deposits.
- * @returns A unique string payload.
  */
 const createInvoicePayload = (userId: number, type: 'subscription' | 'deposit', amount?: number) => {
     return `invoice-${userId}-${type}-${Date.now()}${amount ? `-${amount}` : ''}`;
@@ -32,7 +27,7 @@ export function setupBot(client: TelegramClient) {
 
     bot.start(async (ctx) => {
         const userId = ctx.from.id.toString();
-        await updateUser(userId, {}); // Ensure user exists in the database.
+        await updateUser(userId, {});
         return showMainMenu(ctx);
     });
 
@@ -87,13 +82,8 @@ export function setupBot(client: TelegramClient) {
         const user = await getUser(ctx.from.id.toString());
         const lang = user?.language || 'en';
         await ctx.deleteMessage().catch(() => {});
-
-        let filterListText = user && user.filters.length > 0
-            ? user.filters.map((f, i) => t(lang, 'filter_line')(i + 1, f.min_price, f.max_price, f.purchased_count, f.max_repeats)).join("\n\n")
-            : t(lang, 'no_filters_set') as string;
-
+        let filterListText = user && user.filters.length > 0 ? user.filters.map((f, i) => t(lang, 'filter_line')(i + 1, f.min_price, f.max_price, f.purchased_count, f.max_repeats)).join("\n\n") : t(lang, 'no_filters_set') as string;
         const menuText = t(lang, 'settings_menu_title')(filterListText);
-
         await ctx.reply(menuText, Markup.inlineKeyboard([
             [Markup.button.callback(t(lang, 'add_filter_button') as string, "add_filter_start")],
             [Markup.button.callback(t(lang, 'clear_filters_button') as string, "clear_filters")],
@@ -135,12 +125,22 @@ export function setupBot(client: TelegramClient) {
         expiryDate.setMonth(expiryDate.getMonth() + 1);
         await updateUser(targetId, { subscription_active: true, subscription_expires_at: expiryDate.toISOString() });
         
-        const result = await createPrivateChannelForUser(client, targetId);
+        // FIX: Fetch username with a fallback to prevent crashes
+        let targetUserName = `User ${targetId}`;
+        try {
+            const users = await client.invoke(new Api.users.GetUsers({ id: [new Api.InputUser({ userId: bigInt(targetId), accessHash: bigInt(0) })] }));
+            if (users && users.length > 0 && users[0]) {
+                targetUserName = (users[0] as Api.User).firstName || targetUserName;
+            }
+        } catch (e) {
+            console.warn(`Could not fetch username for ${targetId}, using default name. Error: ${e}`);
+        }
+
+        const result = await createPrivateChannelForUser(client, targetId, targetUserName);
         
         let replyMessage = `✅ Subscription granted to user ${targetId} for one month.`;
         if (result) {
             replyMessage += `\n\nPlease send this private invite link to the user:\n${result.inviteLink}`;
-            // Start the process of checking for join and promoting to admin
             handleAdminPromotion(client, bot, targetId);
         } else {
             replyMessage += `\n\nUser may already have a channel, or an error occurred.`;
@@ -192,6 +192,7 @@ export function setupBot(client: TelegramClient) {
 
     bot.on("successful_payment", async (ctx) => {
         const userId = ctx.from.id.toString();
+        const userFirstName = ctx.from.first_name; // FIX: Get name directly from context
         const user = await getUser(userId);
         const lang = user?.language || 'en';
         const payload = ctx.message.successful_payment.invoice_payload;
@@ -201,7 +202,7 @@ export function setupBot(client: TelegramClient) {
             expiryDate.setMonth(expiryDate.getMonth() + 1);
             await updateUser(userId, { subscription_active: true, subscription_expires_at: expiryDate.toISOString() });
             
-            const result = await createPrivateChannelForUser(client, userId);
+            const result = await createPrivateChannelForUser(client, userId, userFirstName);
             const successMessage = t(lang, 'subscription_success') as string;
             
             if (result) {
@@ -258,7 +259,7 @@ export function setupBot(client: TelegramClient) {
     });
 
     bot.launch();
-    console.log("Bot (final version) with 15s timed-check promotion has been launched.");
+    console.log("Bot (final version) with crash fix has been launched.");
 }
 
 // --- Helper Functions ---
@@ -299,12 +300,10 @@ async function showLanguageMenu(ctx: Context) {
     else await ctx.reply(text, keyboard);
 }
 
-async function createPrivateChannelForUser(client: TelegramClient, userId: string): Promise<{ inviteLink: string; } | null> {
+async function createPrivateChannelForUser(client: TelegramClient, userId: string, userFirstName: string): Promise<{ inviteLink: string; } | null> {
     const user = await getUser(userId);
     if (user && user.subscription_active && !user.channel_id) {
         try {
-            const users = await client.invoke(new Api.users.GetUsers({ id: [new Api.InputUser({ userId: bigInt(userId), accessHash: bigInt(0) })] }));
-            const userFirstName = (users[0] as Api.User).firstName || `User ${userId}`;
             const result = await client.invoke(new Api.channels.CreateChannel({ title: `⭐ Gifts for ${userFirstName}`, about: `Managed by bot for user ID: ${userId}`, megagroup: false })) as Api.Updates;
             const channel = result.chats[0] as Api.Channel;
             const channelId = bigInt(channel.id);
@@ -351,20 +350,17 @@ async function handleAdminPromotion(client: TelegramClient, bot: Telegraf<Contex
         }
     };
 
-    // First check after 10 seconds
-    console.log(`Waiting 10 seconds to check for user ${userId} join...`);
-    await delay(15000); // Changed from 60000 to 10000
+    console.log(`Waiting 25 seconds to check for user ${userId} join...`);
+    await delay(25000);
     let isPromoted = await checkAndPromote();
     
-    // If not promoted, send warning and check again after 15 seconds
     if (!isPromoted) {
         await bot.telegram.sendMessage(userId, "⚠️ We noticed you haven't joined your private channel yet. Please join within the next 15 seconds to be granted admin rights.");
         console.log(`Warning sent to user ${userId}. Waiting another 15 seconds...`);
-        await delay(15000); // Changed from 60000 to 15000
+        await delay(15000);
         isPromoted = await checkAndPromote();
     }
     
-    // If still not promoted, send final message
     if (!isPromoted) {
         console.log(`User ${userId} failed to join the channel in time.`);
         await bot.telegram.sendMessage(userId, "❌ You did not join the channel in time. Please contact support to be manually promoted.");
